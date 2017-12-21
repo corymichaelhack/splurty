@@ -10,6 +10,7 @@
   <body>
     <header class="row">
       <div class="col-3">
+        <!-- Logo to link to root file -->
         <%= link_to root_path, class: 'logo' do %>
          <div class="circle">
           <br />
@@ -22,12 +23,16 @@
         <% end %>
       </div>
       <div class="col-4 col-sm-4 hidden-xs-down slogan">
-        Splurting out unsolicited adives about everything since everytime.
+        Splurting out inspirational quotes.
       </div>
       <div class="col-10 offset-1 offset-sm-0 col-sm-5 links">
-        <!-- Button trigger modal -->
+        <!-- Link to Pop up simple_form, modal -->
         <%= link_to 'Contribute', '#', data: {toggle: 'modal', target: '#myModal'} %>
+        
+
         &nbsp;&nbsp;
+
+        <!-- Link to About Page-->
         <%= link_to 'About', about_path %>
 
       </div>
@@ -44,14 +49,18 @@
             <h4 class="modal-title" id="myModalLabel">Contribute Your Quote</h4>
           </div>
           <div class="modal-body">
-          
+          <!-- Bootstrap capable form -->
+            <!-- Create new quote from simple_form-->
           <%= simple_form_for Quote.new do |f| %>
+              <!-- Take input for saying from user -->
               <%= f.input :saying, label: "What is the saying you want to add?", placeholder: "Fear is the disease. Hustle is the antidote." %>
               <br />
+              <!-- Take input for author from user -->
               <%= f.input :author, label: "Who is the author of this quote?", placeholder: "Travis Kalanick" %>
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- Button to trigger Create  -->
               <%= f.submit 'Create', class: 'btn btn-danger' %>
             </div>
             <% end %>
@@ -64,6 +73,7 @@
     <br class="clear">
 
     <div class="container">
+      <!-- Validation checker on simple_form -->
         <% if flash[:error].present? %>
             <div class="col-10 offset-1 alert alert-danger">
             <%= flash[:error].html_safe %>
@@ -76,6 +86,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12 col-sm-6">
+            <!-- Trigger another quote to appear -->
             <%= link_to "Gimme another quote...please." , root_path, class: 'next-quote' %>
           </div>
           <div class="col-12 col-sm-6 footer-blurb">
