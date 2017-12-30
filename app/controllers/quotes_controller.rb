@@ -22,6 +22,9 @@ class QuotesController < ApplicationController
     
   end
 
+  def contact
+  end
+
   private
 
 
